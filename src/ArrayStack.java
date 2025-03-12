@@ -29,7 +29,7 @@ public class ArrayStack<E> extends Stack<E> {
     }
 
     public boolean isEmpty() {
-        return (t == -1);
+        return (t == -1); //return the empty stack
     }
 
     public void push(E e) throws IllegalStateException {
