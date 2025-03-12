@@ -44,7 +44,7 @@ public class ArrayStack<E> extends Stack<E> {
 
     public E pop() {
         if (isEmpty()) return null;
-        E answer = data[t];
+        E answer = data[t]; //assigning the last value of the stack to the answer generic value
         data[t] = null; //dereference to help garbage collection
         t--;
         return answer;
