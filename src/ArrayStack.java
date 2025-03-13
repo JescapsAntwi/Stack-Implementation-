@@ -24,6 +24,18 @@ public class ArrayStack<E> extends Stack<E> {
         data = (E[]) new Object[CAPACITY]; //safe cast
     }
 
+    //generic method for reversing an array
+    public static <E> void reverse(E[] a) {
+        Stack<E> buffer = new ArrayStack<>(a.length);
+        for (int i = 0; i < a.length; i++) {
+            buffer.push(a[i]);
+        }
+        for (int i = 0; i < a.length; i++) {
+            a[i] = buffer.pop(); //overwriting the cells of the
+            //array from beginning to end
+        }
+    }
+
     public int size() {
         return (t + 1);
     }
@@ -32,14 +44,17 @@ public class ArrayStack<E> extends Stack<E> {
         return (t == -1); //return the empty stack
     }
 
-    public void push(E e) throws IllegalStateException {
+    public E push(E e) throws IllegalStateException {
         if (size() == data.length) throw new IllegalStateException("Stack is full");
         data[++t] = e; //increment t before storing new item
+        return e;
     }
 
     public E top() {
         if (isEmpty()) return null;
-        return data[t];
+        else {
+            return data[t];
+        }
     }
 
     public E pop() {
